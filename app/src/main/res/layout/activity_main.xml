@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <import type="android.databinding.ObservableArrayList" />
+        <import type="com.example.databindinglistview.DateTime"/>
+        <import type="com.example.databindinglistview.MainEventHandler"/>
+        <variable name="dateTimeList" type="ObservableArrayList&lt;DateTime&gt;" />
+        <variable name="handlers" type="MainEventHandler" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="add"
+            android:onClick="@{handlers.onAdd}"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+            android:onClick="@{handlers.onDelete}"
+            />
+
+        <com.example.databindinglistview.DateTimeListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fadeScrollbars="false"
+            app:list="@{dateTimeList}"
+            android:onItemClickListener="@{handlers.onItemClick}"
+            />
+    </LinearLayout>
+</layout>
